@@ -33,7 +33,7 @@ export default function Cart() {
                   </S.ProductId>
                   <S.ProductColor />
                   <S.ProductSize>
-                    <b>Weight:</b>500g
+                    <b>Weight:</b>600g
                   </S.ProductSize>
                 </S.Details>
               </S.ProductDetail>
