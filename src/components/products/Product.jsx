@@ -4,6 +4,7 @@ import {
   ShoppingCartOutlined,
 } from "@mui/icons-material";
 import React from "react";
+import { Link } from "react-router-dom";
 import * as S from "./Product.styles";
 
 export default function Product({ item }) {
@@ -16,7 +17,9 @@ export default function Product({ item }) {
           <ShoppingCartOutlined />
         </S.Icon>
         <S.Icon>
-          <SearchOutlined />
+          <Link to={`/product/${item._id}`}>
+            <SearchOutlined />
+          </Link>
         </S.Icon>
         <S.Icon>
           <FavoriteBorderOutlined />

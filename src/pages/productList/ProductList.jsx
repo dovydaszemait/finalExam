@@ -1,4 +1,6 @@
 import React from "react";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import Announcement from "../../components/announcement/Announcement";
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
@@ -7,6 +9,18 @@ import Products from "../../components/products/Products";
 import * as S from "./ProductList.styles";
 
 export default function ProductList() {
+  const location = useLocation();
+  const cat = location.pathname.split("/")[2];
+  const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState("newest");
+
+  const handleFilters = (e) => {
+    const value = e.target.value;
+    setFilters({
+      ...filters,
+      [e.target.name]: value,
+    });
+  };
   return (
     <S.Cointainer>
       <Navbar />
@@ -15,20 +29,16 @@ export default function ProductList() {
       <S.FilterContainer>
         <S.Filter>
           <S.FilterText>Filter products:</S.FilterText>
-          <S.Select>
-            <S.Option disabled selected>
-              Color
-            </S.Option>
-            <S.Option>White</S.Option>
-            <S.Option>Black</S.Option>
-            <S.Option>Red</S.Option>
-            <S.Option>Blue</S.Option>
-            <S.Option>Green</S.Option>
+          <S.Select name="color" onChange={handleFilters}>
+            <S.Option disabled>Color</S.Option>
+            <S.Option>white</S.Option>
+            <S.Option>black</S.Option>
+            <S.Option>red</S.Option>
+            <S.Option>blue</S.Option>
+            <S.Option>green</S.Option>
           </S.Select>
-          <S.Select>
-            <S.Option disabled selected>
-              Size
-            </S.Option>
+          <S.Select name="size" onChange={handleFilters}>
+            <S.Option disabled>Size</S.Option>
             <S.Option>XS</S.Option>
             <S.Option>S</S.Option>
             <S.Option>M</S.Option>
@@ -38,14 +48,14 @@ export default function ProductList() {
         </S.Filter>
         <S.Filter>
           <S.FilterText>Sort products:</S.FilterText>
-          <S.Select>
-            <S.Option selected>Newest</S.Option>
-            <S.Option>Price (asc)</S.Option>
-            <S.Option>Price (desc)</S.Option>
+          <S.Select onChange={(e) => setSort(e.target.value)}>
+            <S.Option value="newest">Newest</S.Option>
+            <S.Option value="asc">Price (asc)</S.Option>
+            <S.Option value="desc">Price (desc)</S.Option>
           </S.Select>
         </S.Filter>
       </S.FilterContainer>
-      <Products />
+      <Products cat={cat} filters={filters} sort={sort} />
       <Newsletter />
       <Footer />
     </S.Cointainer>
