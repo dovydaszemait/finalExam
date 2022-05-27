@@ -1,11 +1,43 @@
 import { Add, Remove } from "@mui/icons-material";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import StripeCheckout from "react-stripe-checkout";
 import Announcement from "../../components/announcement/Announcement";
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
+import { userRequest } from "../../requestMethods";
 import * as S from "./Cart.styles";
 
+const KEY = process.env.REACT_APP_STRIPE;
+
 export default function Cart() {
+  const cart = useSelector((state) => state.cart);
+  const [stripeToken, setStripeToken] = useState(null);
+  const navigate = useNavigate();
+
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+
+  useEffect(
+    (cart) => {
+      const makeRequest = async () => {
+        try {
+          const res = await userRequest.post("/checkout/payment", {
+            tokenId: stripeToken.id,
+            amount: 500,
+          });
+          navigate.push("/success", {
+            stripeData: res.data,
+            products: cart,
+          });
+        } catch {}
+      };
+      stripeToken && makeRequest();
+    },
+    [stripeToken, cart.total, navigate]
+  );
   return (
     <S.Container>
       <Navbar />
@@ -22,63 +54,45 @@ export default function Cart() {
         </S.Top>
         <S.Bottom>
           <S.Info>
-            <S.Product>
-              <S.ProductDetail>
-                <S.Image src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" />
-                <S.Details>
-                  <S.ProductName>
-                    <b>Product:</b>PROTEIN
-                  </S.ProductName>
-                  <S.ProductId>
-                    <b>ID:</b>65765858595
-                  </S.ProductId>
-                  <S.ProductColor color="black" />
-                  <S.ProductSize>
-                    <b>Weight:</b>600g
-                  </S.ProductSize>
-                </S.Details>
-              </S.ProductDetail>
-              <S.PriceDetail>
-                <S.ProductAmountContainer>
-                  <Add />
-                  <S.ProductAmount>2</S.ProductAmount>
-                  <Remove />
-                </S.ProductAmountContainer>
-                <S.ProductPrice>$ 30</S.ProductPrice>
-              </S.PriceDetail>
-            </S.Product>
-            <S.Hr />
-            <S.Product>
-              <S.ProductDetail>
-                <S.Image src="https://i.pinimg.com/originals/2d/af/f8/2daff8e0823e51dd752704a47d5b795c.png" />
-                <S.Details>
-                  <S.ProductName>
-                    <b>Product:</b>BURGEER
-                  </S.ProductName>
-                  <S.ProductId>
-                    <b>ID:</b>2332323445
-                  </S.ProductId>
-                  <S.ProductColor color="red" />
-                  <S.ProductSize>
-                    <b>Weight:</b>12600g
-                  </S.ProductSize>
-                </S.Details>
-              </S.ProductDetail>
-              <S.PriceDetail>
-                <S.ProductAmountContainer>
-                  <Add />
-                  <S.ProductAmount>2</S.ProductAmount>
-                  <Remove />
-                </S.ProductAmountContainer>
-                <S.ProductPrice>$ 30</S.ProductPrice>
-              </S.PriceDetail>
-            </S.Product>
+            {cart.products.map((product) => (
+              <S.Product>
+                <S.ProductDetail>
+                  <S.Image src={product.img} />
+                  <S.Details>
+                    <S.ProductName>
+                      <b>Product:</b>
+                      {product.title}
+                    </S.ProductName>
+                    <S.ProductId>
+                      <b>ID:</b>
+                      {product._id}
+                    </S.ProductId>
+                    <S.ProductColor color={product.color} />
+                    <S.ProductSize>
+                      <b>Weight:</b>
+                      {product.size}
+                    </S.ProductSize>
+                  </S.Details>
+                </S.ProductDetail>
+                <S.PriceDetail>
+                  <S.ProductAmountContainer>
+                    <Add />
+                    <S.ProductAmount>{product.quantity}</S.ProductAmount>
+                    <Remove />
+                  </S.ProductAmountContainer>
+                  <S.ProductPrice>
+                    $ {product.price * product.quantity}
+                  </S.ProductPrice>
+                </S.PriceDetail>
+              </S.Product>
+            ))}
           </S.Info>
+          <S.Hr />
           <S.Summary>
             <S.SummaryTitle>ORDER SUMMARY</S.SummaryTitle>
             <S.SummaryItem>
               <S.SummaryItemText>Subtotal</S.SummaryItemText>
-              <S.SummaryItemText>$ 80</S.SummaryItemText>
+              <S.SummaryItemText>$ {cart.total}</S.SummaryItemText>
             </S.SummaryItem>
             <S.SummaryItem>
               <S.SummaryItemText>Estimated shipping</S.SummaryItemText>
@@ -90,9 +104,20 @@ export default function Cart() {
             </S.SummaryItem>
             <S.SummaryItem>
               <S.SummaryItemText type="total">Total</S.SummaryItemText>
-              <S.SummaryItemText>$ 80</S.SummaryItemText>
+              <S.SummaryItemText>$ {cart.total}</S.SummaryItemText>
             </S.SummaryItem>
-            <S.Button>Checkuot</S.Button>
+            <StripeCheckout
+              name="Lama Shop"
+              image="https://avatars.githubusercontent.com/u/1486366?v=4"
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total}`}
+              amount={cart.total * 100}
+              token={onToken}
+              stripeKey={KEY}
+            >
+              <S.Button>Checkuot</S.Button>
+            </StripeCheckout>
           </S.Summary>
         </S.Bottom>
       </S.Wrapper>

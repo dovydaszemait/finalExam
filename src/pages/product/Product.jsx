@@ -1,10 +1,13 @@
 import { Add, Remove } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import Announcement from "../../components/announcement/Announcement";
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 import Newsletter from "../../components/newsletter/Newsletter";
+import { addProduct } from "../../redux/cartRedux";
+import { publicRequest } from "../../requestMethods";
 import * as S from "./Product.styles";
 
 export default function Product() {
