@@ -21,6 +21,7 @@ export default function ProductList() {
       [e.target.name]: value,
     });
   };
+
   return (
     <S.Cointainer>
       <Navbar />
