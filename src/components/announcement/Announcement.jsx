@@ -4,7 +4,8 @@ import * as S from "./Announcement.styles";
 export default function Announcement() {
   return (
     <S.Cointainer>
-      Super Deal!Super Deal!Super Deal!Super Deal!Super Deal!Super Deal!
+      ❗️Spring sale discounts up to 40% for new bikes! ❗️Spring sale discounts
+      up to 40% for new bikes! ❗️Spring sale discounts up to 40% for new bikes!
     </S.Cointainer>
   );
 }

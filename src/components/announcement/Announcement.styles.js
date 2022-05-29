@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Cointainer = styled.div`
-  height: 30px;
-  background-color: teal;
+  height: 35px;
+  background-color: #eec591;
   color: white;
   display: flex;
   align-items: center;

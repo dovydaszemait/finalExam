@@ -8,6 +8,7 @@ import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import Cart from "./pages/cart/Cart";
 import Success from "./pages/Success";
+import HomeAll from "./pages/homeAll/HomeAll";
 
 const App = () => {
   // const user = useSelector((state) => state.user.currentUser);
@@ -16,13 +17,14 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          path="/home"
           element={
             <PrivateRoute>
-              <Home />
+              <Home />{" "}
             </PrivateRoute>
           }
         />
+        <Route path="/" element={<HomeAll />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/products/:category" element={<ProductList />} />

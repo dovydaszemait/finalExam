@@ -24,8 +24,9 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f3fbfd;
+  background-color: white;
   position: relative;
+  border: solid teal 0.1px;
   &:hover ${Info} {
     opacity: 1;
   }
@@ -40,6 +41,7 @@ export const Circle = styled.div`
 `;
 export const Image = styled.img`
   height: 75%;
+  width: 90%;
   z-index: 2;
 `;
 

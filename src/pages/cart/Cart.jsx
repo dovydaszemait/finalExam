@@ -1,6 +1,5 @@
-import { Add, Remove } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
 import Announcement from "../../components/announcement/Announcement";
@@ -8,11 +7,18 @@ import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 import { userRequest } from "../../requestMethods";
 import * as S from "./Cart.styles";
+import { removeProduct } from "../../redux/cartRedux";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
 export default function Cart() {
   const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  const handleDelete = (data) => {
+    dispatch(removeProduct({ data }));
+  };
+
   const [stripeToken, setStripeToken] = useState(null);
   const navigate = useNavigate();
 
@@ -38,6 +44,12 @@ export default function Cart() {
     },
     [stripeToken, cart.total, navigate]
   );
+
+  const continueShop = () => {
+    let path = `/products/:category`;
+    navigate(path);
+  };
+
   return (
     <S.Container>
       <Navbar />
@@ -45,12 +57,20 @@ export default function Cart() {
       <S.Wrapper>
         <S.Title>Your cart</S.Title>
         <S.Top>
-          <S.TopButton>Continue shopping</S.TopButton>
-          <S.TopTexts>
-            <S.TopText>Shopping Bag(2)</S.TopText>
-            <S.TopText>Your Wishlist(0)</S.TopText>
-          </S.TopTexts>
-          <S.TopButton type="filled">Checkout now</S.TopButton>
+          <S.TopButton onClick={continueShop}>Continue shopping</S.TopButton>
+          <S.TopTexts></S.TopTexts>
+          <StripeCheckout
+            name="natural."
+            image="https://trek.scene7.com/is/image/TrekBicycleProducts/TK18_B100_Ad_Card_Final_9x11_v2?$responsive-pjpg$&cache=on,on&wid=640"
+            billingAddress
+            shippingAddress
+            description={`Your total is $${cart.total}`}
+            amount={cart.total * 100}
+            token={onToken}
+            stripeKey={KEY}
+          >
+            <S.TopButton type="filled">Checkout now</S.TopButton>
+          </StripeCheckout>
         </S.Top>
         <S.Bottom>
           <S.Info>
@@ -60,29 +80,28 @@ export default function Cart() {
                   <S.Image src={product.img} />
                   <S.Details>
                     <S.ProductName>
-                      <b>Product:</b>
+                      <b>Product: </b>
                       {product.title}
                     </S.ProductName>
                     <S.ProductId>
-                      <b>ID:</b>
+                      <b>ID: </b>
                       {product._id}
                     </S.ProductId>
                     <S.ProductColor color={product.color} />
                     <S.ProductSize>
-                      <b>Weight:</b>
+                      <b>Size: </b>
                       {product.size}
                     </S.ProductSize>
                   </S.Details>
                 </S.ProductDetail>
                 <S.PriceDetail>
                   <S.ProductAmountContainer>
-                    <Add />
                     <S.ProductAmount>{product.quantity}</S.ProductAmount>
-                    <Remove />
                   </S.ProductAmountContainer>
                   <S.ProductPrice>
                     $ {product.price * product.quantity}
                   </S.ProductPrice>
+                  <S.Btn onClick={handleDelete}>Remove item</S.Btn>
                 </S.PriceDetail>
               </S.Product>
             ))}
@@ -107,8 +126,8 @@ export default function Cart() {
               <S.SummaryItemText>$ {cart.total}</S.SummaryItemText>
             </S.SummaryItem>
             <StripeCheckout
-              name="Lama Shop"
-              image="https://avatars.githubusercontent.com/u/1486366?v=4"
+              name="natural."
+              image="https://trek.scene7.com/is/image/TrekBicycleProducts/TK18_B100_Ad_Card_Final_9x11_v2?$responsive-pjpg$&cache=on,on&wid=640"
               billingAddress
               shippingAddress
               description={`Your total is $${cart.total}`}

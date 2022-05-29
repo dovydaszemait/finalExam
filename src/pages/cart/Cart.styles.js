@@ -129,3 +129,36 @@ export const Button = styled.button`
   color: white;
   font-weight: 600;
 `;
+
+export const AddContainer = styled.div`
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const AmountContainer = styled.div`
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+`;
+
+export const Amount = styled.span`
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid teal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 5px;
+`;
+
+export const Btn = styled.button`
+  width: 30%;
+  height: 4vh;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+`;

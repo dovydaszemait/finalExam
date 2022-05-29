@@ -53,6 +53,10 @@ export const List = styled.ul`
 export const ListItem = styled.li`
   width: 50%;
   margin-bottom: 10px;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const Right = styled.div`

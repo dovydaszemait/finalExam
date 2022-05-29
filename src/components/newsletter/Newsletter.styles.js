@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 60vh;
-  background-color: #fcf5f5;
+  height: 35vh;
+  background-color: #eec591;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,6 +37,6 @@ export const Input = styled.input`
 export const Button = styled.button`
   flex: 1;
   border: none;
-  background-color: teal;
+  background-color: #755b3b;
   color: white;
 `;

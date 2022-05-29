@@ -26,7 +26,7 @@ export default function ProductList() {
     <S.Cointainer>
       <Navbar />
       <Announcement />
-      <S.Title>Dresses</S.Title>
+      <S.Title>Bikes</S.Title>
       <S.FilterContainer>
         <S.Filter>
           <S.FilterText>Filter products:</S.FilterText>

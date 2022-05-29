@@ -40,8 +40,8 @@ export const Center = styled.div`
 export const Logo = styled.h1`
   font-weight: bold;
   text-align: center;
-  font-size: 40px;
   cursor: pointer;
+  font-size: 40px;
 `;
 
 export const Right = styled.div`
@@ -55,22 +55,4 @@ export const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
-`;
-
-export const List = styled.ul`
-  margin: 5px;
-  padding: 5px;
-  list-style: none;
-  gap: 30px;
-  display: flex;
-  align-items: center;
-`;
-
-export const ListItem = styled.li`
-  width: 50%;
-  margin-bottom: 10px;
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
 `;

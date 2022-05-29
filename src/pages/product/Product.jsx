@@ -1,7 +1,7 @@
 import { Add, Remove } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Announcement from "../../components/announcement/Announcement";
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
@@ -24,6 +24,7 @@ export default function Product() {
       try {
         const res = await publicRequest.get("/products/find/" + id);
         setProduct(res.data);
+        console.log(res.data);
       } catch {}
     };
     getProduct();
@@ -41,6 +42,11 @@ export default function Product() {
     dispatch(addProduct({ ...product, quantity, color, size }));
   };
 
+  let navigate = useNavigate();
+  const toCart = () => {
+    let path = `/cart`;
+    navigate(path);
+  };
   return (
     <S.Container>
       <Navbar />
@@ -75,7 +81,7 @@ export default function Product() {
               <S.Amount>{quantity}</S.Amount>
               <Add onClick={() => handleQuantity("inc")} />
             </S.AmountContainer>
-            <S.Button onClick={handleClick}>ADD TO CART</S.Button>
+            <S.Button onClick={handleClick && toCart}>ADD TO CART</S.Button>
           </S.AddContainer>
         </S.InfoContainer>
       </S.Wrapper>

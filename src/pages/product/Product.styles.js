@@ -4,6 +4,9 @@ export const Container = styled.div``;
 export const Wrapper = styled.div`
   padding: 50px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
 `;
 export const ImgContainer = styled.div`
   flex: 1;
@@ -15,7 +18,7 @@ export const Image = styled.img`
 `;
 export const InfoContainer = styled.div`
   flex: 1;
-  padding: 0px 50px;
+  padding-left: 140px;
 `;
 export const Title = styled.h1`
   font-weight: 200;

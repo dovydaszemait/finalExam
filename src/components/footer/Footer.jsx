@@ -9,17 +9,32 @@ import {
   Twitter,
 } from "@mui/icons-material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "./Footer.styles";
 
 export default function Footer() {
+  let navigate = useNavigate();
+  const link1 = () => {
+    let path = `/home`;
+    navigate(path);
+  };
+  const link2 = () => {
+    let path = `/cart`;
+    navigate(path);
+  };
+  const link3 = () => {
+    let path = `/products/:category`;
+    navigate(path);
+  };
   return (
     <S.Container>
       <S.Left>
         <S.Logo>natural.</S.Logo>
         <S.Desc>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don’t look even slightly believable.
+          The most authentic cycling shop based in the heart of Vilnius circa
+          1987. We sell a wide variety of bikes, do any bike repairs and
+          services. We partnership with Giant, Cannondale, Bianchi, Felt, Focus
+          and Trek.
         </S.Desc>
         <S.SocialContainer>
           <S.SocialIcon color="3B5999">
@@ -37,33 +52,28 @@ export default function Footer() {
         </S.SocialContainer>
       </S.Left>
       <S.Center>
-        <S.Title>Useful Links</S.Title>
+        <S.Title>Navigation</S.Title>
         <S.List>
-          <S.ListItem>Home</S.ListItem>
-          <S.ListItem>Cart</S.ListItem>
-          <S.ListItem>Man Fashion</S.ListItem>
-          <S.ListItem>Woman Fashion</S.ListItem>
-          <S.ListItem>Accessories</S.ListItem>
-          <S.ListItem>My Account</S.ListItem>
-          <S.ListItem>Order Tracking</S.ListItem>
-          <S.ListItem>Wishlist</S.ListItem>
-          <S.ListItem>Wishlist</S.ListItem>
-          <S.ListItem>Terms</S.ListItem>
+          <S.ListItem onClick={link1}>Home</S.ListItem>
+          <S.ListItem onClick={link2}>Cart</S.ListItem>
+          <S.ListItem onClick={link3}>Road bikes</S.ListItem>
+          <S.ListItem onClick={link3}>Mountain bikes</S.ListItem>
+          <S.ListItem onClick={link3}>Accessories</S.ListItem>
+          <S.ListItem onClick={link3}>Terms</S.ListItem>
         </S.List>
       </S.Center>
       <S.Right>
-        <S.Title>Contact</S.Title>
+        <S.Title>Contact us</S.Title>
         <S.ContactItem>
-          <Room style={{ marginRight: "10px" }} /> 622 Dixie Path , South
-          Tobinchester 98336
+          <Room style={{ marginRight: "10px" }} /> Konstitucijos pr. 669-26,
+          Vilnius, Lithuania LT-78783
         </S.ContactItem>
         <S.ContactItem>
-          <Phone style={{ marginRight: "10px" }} /> +1 234 56 78
+          <Phone style={{ marginRight: "10px" }} /> +370 616 08 245
         </S.ContactItem>
         <S.ContactItem>
-          <MailOutline style={{ marginRight: "10px" }} /> contact@lama.dev
+          <MailOutline style={{ marginRight: "10px" }} /> contact@natural.lt
         </S.ContactItem>
-        <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </S.Right>
     </S.Container>
   );

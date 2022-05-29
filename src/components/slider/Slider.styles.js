@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Cointainer = styled.div`
-  height: 100vh;
+  height: 90vh;
   width: 100%;
   display: flex;
   position: relative;
@@ -44,11 +44,12 @@ export const Slide = styled.div`
 
 export const ImgContainer = styled.div`
   height: 100%;
+  width: 100%;
   flex: 1;
 `;
 
 export const Image = styled.img`
-  height: 80%;
+  height: 100%;
 `;
 
 export const InfoContainer = styled.div`
@@ -57,7 +58,7 @@ export const InfoContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 70px;
+  font-size: 60px;
 `;
 
 export const Desc = styled.p`

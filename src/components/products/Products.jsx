@@ -2,19 +2,17 @@ import React, { useEffect, useState } from "react";
 import * as S from "./Products.styles";
 import Product from "./Product";
 import axios from "axios";
+import { popularProducts } from "../../data/data";
 
-export default function Products(cat, filters, sort) {
+const Products = ({ cat, filters, sort }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get(
-          cat
-            ? `http://localhost:5000/api/products?category=${cat}`
-            : "http://localhost:5000/api/products"
-        );
+        const res = await axios.get("http://localhost:5000/api/products");
+        console.log(res);
         setProducts(res.data);
       } catch (err) {}
     };
@@ -57,4 +55,6 @@ export default function Products(cat, filters, sort) {
             .map((item) => <Product item={item} key={item.id} />)}
     </S.Container>
   );
-}
+};
+
+export default Products;
