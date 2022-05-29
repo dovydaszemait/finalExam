@@ -42,6 +42,13 @@ export default function Product() {
     dispatch(addProduct({ ...product, quantity, color, size }));
   };
 
+  // const addToCart = () => {
+  //   dispatch(
+  //     addProduct({
+  //       ...product,
+  //       quantity
+  //     }))
+
   let navigate = useNavigate();
   const toCart = () => {
     let path = `/cart`;
@@ -81,7 +88,7 @@ export default function Product() {
               <S.Amount>{quantity}</S.Amount>
               <Add onClick={() => handleQuantity("inc")} />
             </S.AmountContainer>
-            <S.Button onClick={handleClick && toCart}>ADD TO CART</S.Button>
+            <S.Button onClick={handleClick}>ADD TO CART</S.Button>
           </S.AddContainer>
         </S.InfoContainer>
       </S.Wrapper>
