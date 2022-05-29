@@ -14,9 +14,10 @@ const KEY = process.env.REACT_APP_STRIPE;
 export default function Cart() {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
-  const handleDelete = (data) => {
-    dispatch(removeProduct({ data }));
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const handleDelete = () => {
+    dispatch(removeProduct({ product, quantity }));
   };
 
   const [stripeToken, setStripeToken] = useState(null);
