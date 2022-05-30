@@ -42,6 +42,11 @@ export const Button = styled.button`
   color: white;
   cursor: pointer;
   margin-bottom: 10px;
+  &:hover {
+    text-decoration: underline;
+    background-color: teal;
+    opacity: 0.7;
+  }
 `;
 
 export const Link = styled.a`

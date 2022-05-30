@@ -11,8 +11,6 @@ import Success from "./pages/Success";
 import HomeAll from "./pages/homeAll/HomeAll";
 
 const App = () => {
-  // const user = useSelector((state) => state.user.currentUser);
-
   return (
     <BrowserRouter>
       <Routes>
@@ -20,7 +18,7 @@ const App = () => {
           path="/home"
           element={
             <PrivateRoute>
-              <Home />{" "}
+              <Home />
             </PrivateRoute>
           }
         />

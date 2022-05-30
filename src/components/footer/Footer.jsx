@@ -2,7 +2,6 @@ import {
   Facebook,
   Instagram,
   MailOutline,
-  Payment,
   Phone,
   Pinterest,
   Room,
@@ -26,6 +25,7 @@ export default function Footer() {
     let path = `/products/:category`;
     navigate(path);
   };
+
   return (
     <S.Container>
       <S.Left>
@@ -37,16 +37,16 @@ export default function Footer() {
           and Trek.
         </S.Desc>
         <S.SocialContainer>
-          <S.SocialIcon color="3B5999">
+          <S.SocialIcon color="3B5999" onClick={link3}>
             <Facebook />
           </S.SocialIcon>
-          <S.SocialIcon color="E4405F">
+          <S.SocialIcon color="E4405F" onClick={link3}>
             <Instagram />
           </S.SocialIcon>
-          <S.SocialIcon color="55ACEE">
+          <S.SocialIcon color="55ACEE" onClick={link3}>
             <Twitter />
           </S.SocialIcon>
-          <S.SocialIcon color="E60023">
+          <S.SocialIcon color="E60023" onClick={link3}>
             <Pinterest />
           </S.SocialIcon>
         </S.SocialContainer>

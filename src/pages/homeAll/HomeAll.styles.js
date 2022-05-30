@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Cointainer = styled.div`
   width: 100vw;
-  height: 60vh;
+  height: 66vh;
   background: linear-gradient(
       rgba(255, 255, 255, 0.3),
       rgba(255, 255, 255, 0.4)
@@ -54,4 +54,15 @@ export const Button = styled.button`
   background-color: teal;
   color: white;
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    background-color: teal;
+    opacity: 0.7;
+  }
+`;
+export const Logo = styled.h1`
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  font-size: 66px;
 `;

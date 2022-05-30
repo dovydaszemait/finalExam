@@ -3,15 +3,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./Register.styles";
 
-// const regUrl = `${process.env.REACT_APP_SERVER_URL}/auth/register `;
-
 const Register = () => {
   let navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [isError, setIsError] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
 
   const [data, setData] = useState({
     username: "",
@@ -28,6 +21,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const url = "http://localhost:5000/api/auth/register";
+      //const url = `${process.env.REACT_APP_SERVER_URL}/auth/register `;
       const { data: res } = await axios.post(url, data);
       navigate("/login");
       console.log(res.message);
@@ -42,39 +36,6 @@ const Register = () => {
     }
   };
 
-  // async function sendRegisterFetch() {
-  //   const registerObj = {
-  //     username: username,
-  //     email: email,
-  //     password: password,
-  //   };
-
-  //   if (isThereErrors(registerObj)) {
-  //     setErrorMsg("All fields are required !");
-  //     return;
-  //   }
-
-  //   const resp = await fetch("http://localhost:5000/api/auth/register", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(registerObj),
-  //   });
-
-  //   const atsInJs = await resp.json();
-
-  //   if (atsInJs.success) {
-  //     navigate("/login");
-  //   }
-  //   if (atsInJs.success === false) {
-  //     setIsError(true);
-  //   }
-  // }
-  // function submitHandler(e) {
-  //   e.preventDefault();
-  //   sendRegisterFetch();
-  // }
   function isThereErrors(dataToCheck) {
     const mustBeKeys = ["username", "email", "password"];
     const values = Object.values(dataToCheck);
@@ -116,6 +77,7 @@ const Register = () => {
             value={data.password}
           />
           <S.Agreement>
+            <S.Inputs type="checkbox" required />
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </S.Agreement>

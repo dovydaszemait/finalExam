@@ -2,6 +2,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import React, { useState } from "react";
 import * as S from "./Slider.styles";
 import { sliderItems } from "../../data/data";
+import { useNavigate } from "react-router-dom";
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -11,6 +12,12 @@ const Slider = () => {
     } else {
       setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
     }
+  };
+
+  let navigate = useNavigate();
+  const toShop = () => {
+    let path = `/products/:category`;
+    navigate(path);
   };
 
   return (
@@ -27,7 +34,7 @@ const Slider = () => {
             <S.InfoContainer>
               <S.Title>{item.title}</S.Title>
               <S.Desc>{item.desc}</S.Desc>
-              <S.Button>SHOP NOW</S.Button>
+              <S.Button onClick={toShop}>SHOP NOW</S.Button>
             </S.InfoContainer>
           </S.Slide>
         ))}

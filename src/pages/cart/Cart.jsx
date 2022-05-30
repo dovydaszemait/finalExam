@@ -7,7 +7,7 @@ import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 import { userRequest } from "../../requestMethods";
 import * as S from "./Cart.styles";
-import { removeProduct } from "../../redux/cartRedux";
+import { removeProduct, initializeCart } from "../../redux/cartRedux";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -19,7 +19,9 @@ export default function Cart() {
   const handleDelete = () => {
     dispatch(removeProduct({ product, quantity }));
   };
-
+  const resetCart = () => {
+    dispatch(initializeCart({ cart }));
+  };
   const [stripeToken, setStripeToken] = useState(null);
   const navigate = useNavigate();
 
@@ -138,6 +140,8 @@ export default function Cart() {
             >
               <S.Button>Checkuot</S.Button>
             </StripeCheckout>
+            <S.Space />
+            <S.Button onClick={resetCart}>Reset cart</S.Button>
           </S.Summary>
         </S.Bottom>
       </S.Wrapper>

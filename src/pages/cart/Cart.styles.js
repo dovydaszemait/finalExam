@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div``;
+
+export const Space = styled.div`
+  height: 1vh;
+`;
+
 export const Wrapper = styled.div`
   padding: 20px;
 `;
@@ -156,7 +161,7 @@ export const Amount = styled.span`
 
 export const Btn = styled.button`
   width: 30%;
-  height: 4vh;
+  height: 6vh;
   background-color: black;
   color: white;
   font-weight: 600;

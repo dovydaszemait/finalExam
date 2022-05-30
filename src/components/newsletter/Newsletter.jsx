@@ -5,8 +5,9 @@ import * as S from "./Newsletter.styles";
 export default function Newsletter() {
   return (
     <S.Container>
+      <S.Titles>natural.</S.Titles>
       <S.Title>Newsletter</S.Title>
-      <S.Desc>Get timely updates from your favorite products.</S.Desc>
+      <S.Desc>Get newest deals and discounts.</S.Desc>
       <S.InputContainer>
         <S.Input placeholder="Your email" />
         <S.Button>

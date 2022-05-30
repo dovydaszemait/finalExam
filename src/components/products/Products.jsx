@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import * as S from "./Products.styles";
 import Product from "./Product";
 import axios from "axios";
-import { popularProducts } from "../../data/data";
 
 const Products = ({ cat, filters, sort }) => {
   const [products, setProducts] = useState([]);

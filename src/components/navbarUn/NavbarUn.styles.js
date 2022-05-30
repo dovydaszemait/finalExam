@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
 export const Cointainer = styled.div`
-  height: 60px;
+  height: 70px;
+  padding: 10px;
+  justify-content: space-between;
+  align-content: center;
 `;
 
 export const Wrapper = styled.div`
-  padding: 10px 20px;
+  padding: 5px 20px;
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -52,7 +55,10 @@ export const Right = styled.div`
 `;
 
 export const MenuItem = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   margin-left: 25px;
+  &:hover {
+    text-decoration: underline;
+  }
 `;

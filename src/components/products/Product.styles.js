@@ -17,16 +17,18 @@ export const Info = styled.div`
 `;
 
 export const Container = styled.div`
-  flex: 1;
+  //xflex: 1;
   margin: 5px;
   min-width: 280px;
   height: 350px;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  text-decoration: none;
   justify-content: center;
   background-color: white;
+  box-shadow: 0.2px 0.2px rgba(0, 0, 0, 0.2);
   position: relative;
-  border: solid teal 0.1px;
   &:hover ${Info} {
     opacity: 1;
   }
@@ -56,7 +58,19 @@ export const Icon = styled.div`
   margin: 10px;
   transition: all 0.5s ease;
   &:hover {
-    background-color: #e9f5f5;
+    background-color: #abdbe3;
     transform: scale(1.1);
   }
+`;
+
+export const Span = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 1vh;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  font-weight: 700;
+  text-decoration: none;
 `;

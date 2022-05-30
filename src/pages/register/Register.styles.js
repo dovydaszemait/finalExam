@@ -33,7 +33,11 @@ export const Input = styled.input`
   margin: 20px 10px 0px 0px;
   padding: 10px;
 `;
+export const Inputs = styled.input`
+  margin-right: 10px;
+`;
 export const Agreement = styled.span`
+  display: flex;
   font-size: 12px;
   margin: 20px 0px;
 `;
@@ -44,4 +48,9 @@ export const Button = styled.button`
   background-color: teal;
   color: white;
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    background-color: teal;
+    opacity: 0.7;
+  }
 `;

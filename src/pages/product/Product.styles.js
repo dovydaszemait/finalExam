@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   margin-left: 50px;
 `;
 export const ImgContainer = styled.div`
-  flex: 1;
+  //flex: 1;
 `;
 export const Image = styled.img`
   width: 100%;
@@ -19,6 +19,8 @@ export const Image = styled.img`
 export const InfoContainer = styled.div`
   flex: 1;
   padding-left: 140px;
+  align-items: center;
+  justify-content: center;
 `;
 export const Title = styled.h1`
   font-weight: 200;
@@ -65,10 +67,12 @@ export const FilterSize = styled.select`
 export const FilterSizeOption = styled.option``;
 
 export const AddContainer = styled.div`
-  width: 50%;
+  width: 70%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 10px;
+  padding: 10px;
 `;
 
 export const AmountContainer = styled.div`

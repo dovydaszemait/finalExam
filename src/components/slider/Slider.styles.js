@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Cointainer = styled.div`
-  height: 90vh;
+  height: 80vh;
   width: 100%;
   display: flex;
   position: relative;
@@ -69,8 +69,14 @@ export const Desc = styled.p`
 `;
 
 export const Button = styled.button`
-  padding: 10px;
-  font-size: 20px;
+  padding: 15px;
+  font-size: 22px;
   background-color: transparent;
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    background-color: #22272b;
+    color: white;
+    border: solid 1px grey;
+  }
 `;
