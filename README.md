@@ -18,11 +18,11 @@ Sign in to your account with the username and password as registered.
 Browse through categories of bikes, add them to cart, checkuot.
 Happy shopping! 🛒
 
-# These are the main dependancies that should've been installed:
+## These are the main dependancies that should've been installed:
 Front-end:
-*✅ react ✅ react-router-dom ✅ styled-components ✅ axios ✅ @reduxjs/toolkit ✅ @mui/material ✅ react-stripe-checkout
+#✅ react ✅ react-router-dom ✅ styled-components ✅ axios ✅ @reduxjs/toolkit ✅ @mui/material ✅ react-stripe-checkout
  Back-end:
-*⭕️ mongoose ⭕️ brypt ⭕️ express ⭕️ cors ⭕️ nodemon ⭕️ stripe ⭕️ joi ⭕️ dotenv
+#⭕️ mongoose ⭕️ brypt ⭕️ express ⭕️ cors ⭕️ nodemon ⭕️ stripe ⭕️ joi ⭕️ dotenv
 
 ## Enjoy! ✌️
 <img width="1438" alt="Screenshot 2022-05-31 at 01 34 56" src="https://user-images.githubusercontent.com/95608460/171067618-043d83d4-4f36-4086-b34f-c6c0fa17eafb.png">
