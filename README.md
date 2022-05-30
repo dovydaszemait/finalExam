@@ -1,3 +1,5 @@
+### Server side of the e-commerce project.
+
 ## Full-stack e-commerce app 💻
 
 A full-stack e-commerce app 'natural.' for cycling store that sells bikes, accessories and do repairs. 🚴
