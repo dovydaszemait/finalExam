@@ -1,4 +1,4 @@
-### Server side of the e-commerce project.
+### Client side of the e-commerce project. 💡
 
 ## Full-stack e-commerce app 💻
 
