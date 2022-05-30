@@ -7,9 +7,9 @@ This repository is client side only. To get server side click here https://githu
 
 ## How to install and start
 
-git clone
-npm i
-npm start
+- git clone
+- npm i
+- npm start
 
 ## How to use
 
